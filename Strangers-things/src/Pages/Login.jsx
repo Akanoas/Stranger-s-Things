@@ -3,6 +3,7 @@ export default function Login({setToken}){
     const[username, setUsername] = useState();
     const [password, setPassword] = useState();
     return(
+        //Sign in with correct username/password combination
         <div>
             <h1>Login</h1>
             <form >
