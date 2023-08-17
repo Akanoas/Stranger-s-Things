@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar token={ token }/>
       <Routes>
           <Route path='/posts' element={<Posts token={token}/>}  />
           <Route path='/Profile' element={<Profile token={token}/>} />
