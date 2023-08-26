@@ -42,6 +42,7 @@ export default function CreatePost(token){
     
     return(
         <form className="Formcre " onSubmit={(e)=> handleSubmit(e, title,description,price,location,willDeliver)}>
+            <h1>Create A post</h1>
             <label htmlFor="title">Title</label>
             <input 
             type="text"

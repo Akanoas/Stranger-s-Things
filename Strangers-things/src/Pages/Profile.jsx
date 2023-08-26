@@ -1,10 +1,10 @@
-import { useState } from "react"
-export default function Profile({ token }){
-   const[username, setUsername] = useState('');
-   const[message, setMessage] = useState('');
+import CreatePost  from '../Components/CreatePost'
+export default function Profile({token}){
+   
     return(
         <div>
-            Home
+            <h1>Welcome to your Profile</h1>
+            <CreatePost handleSubmit={handleSubmit}/>
         </div>
     )
 }

@@ -1,0 +1,21 @@
+.Link {
+    margin: 0;
+  height: 80px;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 25px;
+    list-style: none;
+}
+
+

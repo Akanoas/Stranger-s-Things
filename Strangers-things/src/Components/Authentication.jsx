@@ -1,7 +1,7 @@
 import { useState } from "react";
 export default function Authentication({ buttonText, handleSubmit}){
-    const[username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const[user, setUser] = useState();
+    const [pwd, setPwd] = useState();
     return(
         <div>
             <form onSubmit={(e)=> handleSubmit(e, username, password)}>
@@ -9,15 +9,15 @@ export default function Authentication({ buttonText, handleSubmit}){
                 <input 
                 type="text"
                 id= 'username'
-                value={username}
-                onChange={(e)=> setUsername(e.target.value)} 
+                value={user}
+                onChange={(e)=> setUser(e.target.value)} 
                 />
                 <label htmlFor="password">Password</label>
                 <input 
                 type="password"
                 id = 'password'
-                value= {password}
-                onChange={(e)=> setPassword(e.target.value)} 
+                value= {pwd}
+                onChange={(e)=> setPwd(e.target.value)} 
                 />
                 <button type="submit">{buttonText}</button>
             </form>
