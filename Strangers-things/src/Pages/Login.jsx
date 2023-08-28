@@ -1,9 +1,11 @@
 import Authentication from '../Components/Authentication';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 export default function Login({setToken}){
 
+    const [success, setSuccess] = useState(false);
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
 
-    const navigate = useNavigate();
     
     async function handleSubmit(e){
      e.preventDefault();
@@ -17,34 +19,52 @@ export default function Login({setToken}){
           },
           body: JSON.stringify({
             user: {
-              username: e.target.user.value ,
-              password: e.target.pwd.value 
+              username: user,
+              password: pwd
             }
           })
         });
         const result = await response.json();
-        setToken(result.data.token);
         console.log(result);
-        return result
+        setSuccess (true);
+        setUser('');
+        setPwd('');
+        setToken(result.data.token);
+       return result
       } catch (err) {
         console.error(err);
       }
-     console.log('Login Success');
-     navigate ('/profile');
     }
    
     return(
         //Sign in with correct username/password combination
+        <>
+            {success ? (
+                <section>
+                    <h1>Login successfull!</h1>
+                    <p>
+                        <a href="http://localhost:5173/posts">Posts</a>
+                        <a href="http://localhost:5173/profile">Profile</a>
+                        <a href="">Messages</a>
+                    
+                    </p>
+                </section>
+            
+            ) : (
+
+            <section>
+                <h1>Login</h1>
+                < Authentication buttonText={'Login'} handleSubmit={handleSubmit}/>
+                <p>
+                    Need an Account?<br />
+                    <span className="line">
+                        <a href=" http://localhost:5173/register ">Sign Up</a>
+                    </span>
+                </p>   
+            </section>
+            )}
         
-        <section>
-            <h1>Login</h1>
-            < Authentication buttonText={'Login'} handleSubmit={handleSubmit}/>
-            <p>
-                Need an Account?<br />
-                <span className="line">
-                    <a href=" http://localhost:5173/register ">Sign Up</a>
-                </span>
-            </p>   
-        </section>
+        </>
+        
     )
 }
